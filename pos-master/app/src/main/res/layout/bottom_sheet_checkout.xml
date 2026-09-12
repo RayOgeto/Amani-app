@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Top Drag Handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/chip_bg_rounded" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Checkout"
+        android:textColor="@color/on_surface"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Total Payable Banner -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="@color/chip_bg"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Amount Due"
+                android:textColor="@color/chip_text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvCheckoutTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/primary"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                tools:text="KSh 420.00" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Payment Method Chips -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Payment Method (Njia ya Malipo)"
+        android:textColor="@color/on_surface"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupPaymentMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCash"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Cash (Taslimu)" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMpesaTill"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M-Pesa Till" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMpesaPaybill"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paybill" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipStoreCredit"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deni / Credit Tab" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCard"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bank Card" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Cash Section -->
+    <LinearLayout
+        android:id="@+id/layoutCashSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cash Tendered (Pesa ya Mteja)"
+            app:prefixText="KSh ">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAmountTendered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Kenyan Cash Denomination Buttons -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuickExact"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Exact"
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuick50"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="50/="
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuick100"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="100/="
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuick200"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="200/="
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuick500"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="500/="
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuick1000"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="1,000/="
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Change Banner -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/chip_bg_rounded"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change (Pesa ya Kurudisha):"
+                android:textColor="@color/on_surface"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvChangeAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="KSh 0.00" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Digital Reference Input (For M-Pesa / Card) -->
+    <LinearLayout
+        android:id="@+id/layoutDigitalSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="M-Pesa Code (e.g., QA12345678)">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPaymentRef"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapCharacters" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Customer Credit Tab / Deni Section -->
+    <LinearLayout
+        android:id="@+id/layoutCreditSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Customer (Jina la Mteja)">
+
+            <AutoCompleteTextView
+                android:id="@+id/actvCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvCustomerDebtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/error"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="Current Outstanding Debt: KSh 350.00" />
+    </LinearLayout>
+
+    <!-- Confirm Payment Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConfirmPayment"
+        style="@style/PosButton.Success"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="20dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="Confirm Sale (Maliza Mauzo)"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/ic_check"
+        app:iconGravity="textStart" />
+
+</LinearLayout>

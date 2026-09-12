@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/surface"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sale Receipt"
+        android:textColor="@color/on_surface"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Receipt Paper Box -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="#FCFDFD"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvReceiptBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:textColor="#263238"
+                android:textSize="12sp"
+                tools:text="================================\n     AMANI POINT OF SALE        \n================================" />
+        </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Printer Device Status / Selector -->
+    <TextView
+        android:id="@+id/tvPrinterStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Ready to print"
+        android:textColor="@color/on_surface_muted"
+        android:textSize="12sp" />
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShareReceipt"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Share"
+            app:cornerRadius="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPrintReceipt"
+            style="@style/PosButton.Primary"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1.2"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Print"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_print"
+            app:iconSize="18dp" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDoneReceipt"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="6dp"
+        android:text="Done / Next Sale"
+        android:textColor="@color/primary" />
+
+</LinearLayout>

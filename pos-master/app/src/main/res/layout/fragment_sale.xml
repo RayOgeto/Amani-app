@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- Top Bar: Search and Scanner -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/on_surface_muted" />
+
+            <EditText
+                android:id="@+id/etSearchOrBarcode"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Search item, scan barcode or PLU..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/on_surface"
+                android:textColorHint="@color/on_surface_muted"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/btnClearSearch"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_delete"
+                android:visibility="gone"
+                app:tint="@color/on_surface_muted" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/divider" />
+
+            <!-- Barcode Camera Scanner Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnScanBarcode"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Scan"
+                android:textSize="12sp"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_barcode_scan"
+                app:iconSize="16dp" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- View Switcher Tabs (Cart vs Catalog) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="6dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tabCart"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Active Cart"
+            android:textSize="13sp"
+            app:cornerRadius="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tabCatalog"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Fresh Produce &amp; Items"
+            android:textSize="13sp"
+            app:cornerRadius="10dp" />
+
+    </LinearLayout>
+
+    <!-- Content Area -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- Cart View -->
+        <LinearLayout
+            android:id="@+id/containerCart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCartItems"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                tools:listitem="@layout/item_cart" />
+
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/layoutEmptyCart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_cart"
+                    app:tint="@color/on_surface_muted" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Your sale cart is empty"
+                    android:textColor="@color/on_surface"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Select sukuma, unga, milk or scan barcode to add items."
+                    android:textColor="@color/on_surface_muted"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Catalog View with Produce Speed Chips -->
+        <LinearLayout
+            android:id="@+id/containerCatalog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="4dp"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupCategories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleLine="true"
+                    app:singleSelection="true" />
+            </HorizontalScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCatalogProducts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                tools:listitem="@layout/item_catalog_product" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- Bottom Checkout Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardCheckoutSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Subtotal & Tax Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCartItemCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/on_surface_muted"
+                    android:textSize="13sp"
+                    tools:text="3 Items (VAT 16% incl.)" />
+
+                <TextView
+                    android:id="@+id/tvVatAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/on_surface_muted"
+                    android:textSize="13sp"
+                    tools:text="VAT: KSh 12.30" />
+            </LinearLayout>
+
+            <!-- Total Price Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TOTAL DUE"
+                    android:textColor="@color/on_surface"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotalDue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondary"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    tools:text="KSh 420.00" />
+            </LinearLayout>
+
+            <!-- Checkout Actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnClearCart"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="0.8"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Clear"
+                    android:textColor="@color/error"
+                    android:textSize="14sp"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCheckout"
+                    style="@style/PosButton.Success"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1.6"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Checkout"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_check"
+                    app:iconGravity="textStart"
+                    app:iconSize="20dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Palette (Modern Indigo) -->
+    <color name="primary">#2563EB</color>
+    <color name="primary_variant">#1D4ED8</color>
+    <color name="primary_dark">#1E3A8A</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <!-- Secondary Palette (Emerald Success) -->
+    <color name="secondary">#059669</color>
+    <color name="secondary_variant">#047857</color>
+    <color name="on_secondary">#FFFFFF</color>
+
+    <!-- Backgrounds & Surfaces -->
+    <color name="background">#F8FAFC</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F1F5F9</color>
+    <color name="on_surface">#0F172A</color>
+    <color name="on_surface_muted">#64748B</color>
+
+    <!-- Functional Colors -->
+    <color name="error">#DC2626</color>
+    <color name="error_surface">#FEE2E2</color>
+    <color name="on_error">#FFFFFF</color>
+
+    <color name="success">#10B981</color>
+    <color name="success_surface">#D1FAE5</color>
+    <color name="warning">#F59E0B</color>
+    <color name="warning_surface">#FEF3C7</color>
+
+    <!-- Dividers & Borders -->
+    <color name="divider">#E2E8F0</color>
+    <color name="border">#CBD5E1</color>
+
+    <!-- Common -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Chips / Categories -->
+    <color name="chip_bg">#EFF6FF</color>
+    <color name="chip_text">#1D4ED8</color>
+</resources>

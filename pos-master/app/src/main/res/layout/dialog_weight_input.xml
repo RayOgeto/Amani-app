@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/surface"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvWeightProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/on_surface"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Nyanya (Fresh Tomatoes)" />
+
+    <TextView
+        android:id="@+id/tvWeightUnitPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="@ KSh 100.00 / KG" />
+
+    <!-- Weight Presets -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Quick Weight Presets"
+        android:textColor="@color/on_surface_muted"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWeightQuarter"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="1/4 kg (0.25)"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWeightHalf"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginStart="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="1/2 kg (0.50)"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWeight1Kg"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginStart="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="1 kg (1.0)"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWeightOneHalf"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginStart="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="1.5 kg"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWeight2Kg"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginStart="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="2 kg"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Custom Weight Entry Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:hint="Enter Exact Weight"
+        app:suffixText="KG">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etWeightQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="1.0"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Total Cost Preview -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/chip_bg_rounded"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Calculated Amount:"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvWeightSubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="KSh 100.00" />
+    </LinearLayout>
+
+    <!-- Actions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelWeight"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Cancel"
+            app:cornerRadius="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddWeightToCart"
+            style="@style/PosButton.Success"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1.4"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="+ Add to Cart"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
+
+</LinearLayout>
